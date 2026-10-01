@@ -306,93 +306,175 @@ A program's flow might look like this:
 ```text
 main() -> validate() -> calculate() -> save() -> display()
 ```
-21) function calling flow
-def multiply(a,b):
-    return a*b
-result=multiply(5,4)
-explen flow :
+## 21. Function calling flow
 
-22) functions are objectes 
+When Python reaches a function call, it passes the arguments to the function’s parameters, runs the function body, and returns the result to the caller.
+
+```python
+def multiply(a, b):
+    return a * b
+
+
+result = multiply(5, 4)
+print(result)
+```
+
+Python passes `5` and `4` to `a` and `b`. The function returns `20`, which is assigned to `result`.
+
+## 22. Functions are objects
+
+Functions are objects in Python. You can assign a function to another variable and call it through that variable.
+
+```python
 def greet():
     print("Hello")
-    x = greet
-    x()
-    x now refers to the function object
 
-23) passing a function to another function
-def squre(x):
-    return x*x
-def process(function,value):
-return function(value) 
-print(process(squre,5))
-this introduces higher order functions(imp point)
 
-24) lambda functions
-squre=lambda x: x*x
-print(squre(5))
-lambda is an anonymous function expression small operations.
-example: numbers[1,2,3,4]
-         result=list(map(lambda x:x*2,numbers))
-         print(result)
+x = greet
+x()
+```
 
-25) recursion
+`x` refers to the same function object as `greet`.
+
+## 23. Passing a function to another function
+
+A function can be passed as an argument to another function. A function that accepts or returns another function is called a **higher-order function**.
+
+```python
+def square(x):
+    return x * x
+
+
+def process(function, value):
+    return function(value)
+
+
+print(process(square, 5))
+```
+
+`process` receives `square` as an argument and calls it with `5`.
+
+## 24. Lambda functions
+
+A lambda is a small anonymous function, often used for a simple operation.
+
+```python
+square = lambda x: x * x
+print(square(5))
+```
+
+A lambda can also be used with `map()` to transform each item in a list:
+
+```python
+numbers = [1, 2, 3, 4]
+result = list(map(lambda x: x * 2, numbers))
+print(result)
+```
+
+This prints `[2, 4, 6, 8]`.
+
+## 25. Recursion
+
+A recursive function calls itself. It needs a **base case** to stop the recursion.
+
+```python
 def countdown(n):
-    if n==0:
-       return
+    if n <= 0:
+        return
+
     print(n)
-    countdown(n-1)
+    countdown(n - 1)
+
+
 countdown(5)
- a recursive function calls itself
+```
 
- 26) function documention
- def add(a,b): 
-     """return this sum of two numbers"""
-     return a+b
+The base case stops the function when `n` reaches `0` or less.
 
-     print(add.__doc__)
-    this introducess proffestional python habbits
+## 26. Function documentation
 
-27) type hints
- for mordern python
-def ad(a: int,b: int) -> int:
-return a+b
-type hints communicate intendeed types to developers and tools; python genrally doesnot enforce them automatically at run time
+A docstring describes what a function does. It should be the first statement inside the function.
 
-28) a practical program
-smart electricity bill
-def caclulate_bill(units):
-    if units<=100:
-       amount=units*2
-    elif units<=200:
-        amount=100*2+(units-100)*4
+```python
+def add(a, b):
+    """Return the sum of two numbers."""
+    return a + b
+
+
+print(add.__doc__)
+```
+
+Docstrings help developers understand and use functions.
+
+## 27. Type hints
+
+Type hints communicate intended types to developers and tools. Python generally does not enforce them automatically at runtime.
+
+```python
+def add(a: int, b: int) -> int:
+    return a + b
+```
+
+This indicates that `a` and `b` are expected to be integers and that the function is expected to return an integer.
+
+## 28. A practical program: electricity bill
+
+```python
+def calculate_bill(units):
+    if units <= 100:
+        amount = units * 2
+    elif units <= 200:
+        amount = 100 * 2 + (units - 100) * 4
     else:
-     amoun=100*2+100*4+(units-200)*6
-    return amount+100
-units=int(input("enter units:"))
-bill=caclulate_bill(units)
-print("bill",bill)
+        amount = 100 * 2 + 100 * 4 + (units - 200) * 6
 
-why did we create caclulate_bill instead og writing everthing in the main program.
-bcz of sepration of responsibily, resability,testing,redability,maitainance.
+    return amount + 100
 
-29) function design
-a good function genrally has input,processing and output.
 
-30) do not create giant functions
-bad functions
-def student_system():
-#200 lines ->bad
-#input 
-#validation
-#calcluation
-#database
-#printing
+units = int(input("Enter units: "))
+bill = calculate_bill(units)
+print("Bill:", bill)
+```
 
-better
-def get_student:
-def validate_student:
-def calculate_student:
-def save_student:
-def display_student:
+The `calculate_bill()` function separates the billing calculation from input and output. This makes the calculation easier to reuse, test, read, and maintain.
 
-this introducess single responsibilty without making the class, the function more efficient
+## 29. Function design
+
+A well-designed function has clear inputs, performs a focused task, and produces an output. Its name and behavior should make its purpose easy to understand.
+
+## 30. Avoid giant functions
+
+A function that handles many unrelated tasks is difficult to understand and maintain. Break it into smaller functions with clear responsibilities.
+
+For example, a student program could use functions like these:
+
+```python
+def get_student():
+    """Get student information."""
+    pass
+
+
+def validate_student(student):
+    """Check that student information is valid."""
+    pass
+
+
+def calculate_result(student):
+    """Calculate the student's result."""
+    pass
+
+
+def save_student(student):
+    """Save the student information."""
+    pass
+
+
+def display_student(student):
+    """Display the student information."""
+    pass
+```
+
+Each function has a focused responsibility. This applies the **single-responsibility principle** to functions without requiring a class. Focused functions improve readability, testing, and maintenance.
+
+
+   
