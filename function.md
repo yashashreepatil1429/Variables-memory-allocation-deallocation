@@ -306,3 +306,93 @@ A program's flow might look like this:
 ```text
 main() -> validate() -> calculate() -> save() -> display()
 ```
+21) function calling flow
+def multiply(a,b):
+    return a*b
+result=multiply(5,4)
+explen flow :
+
+22) functions are objectes 
+def greet():
+    print("Hello")
+    x = greet
+    x()
+    x now refers to the function object
+
+23) passing a function to another function
+def squre(x):
+    return x*x
+def process(function,value):
+return function(value) 
+print(process(squre,5))
+this introduces higher order functions(imp point)
+
+24) lambda functions
+squre=lambda x: x*x
+print(squre(5))
+lambda is an anonymous function expression small operations.
+example: numbers[1,2,3,4]
+         result=list(map(lambda x:x*2,numbers))
+         print(result)
+
+25) recursion
+def countdown(n):
+    if n==0:
+       return
+    print(n)
+    countdown(n-1)
+countdown(5)
+ a recursive function calls itself
+
+ 26) function documention
+ def add(a,b): 
+     """return this sum of two numbers"""
+     return a+b
+
+     print(add.__doc__)
+    this introducess proffestional python habbits
+
+27) type hints
+ for mordern python
+def ad(a: int,b: int) -> int:
+return a+b
+type hints communicate intendeed types to developers and tools; python genrally doesnot enforce them automatically at run time
+
+28) a practical program
+smart electricity bill
+def caclulate_bill(units):
+    if units<=100:
+       amount=units*2
+    elif units<=200:
+        amount=100*2+(units-100)*4
+    else:
+     amoun=100*2+100*4+(units-200)*6
+    return amount+100
+units=int(input("enter units:"))
+bill=caclulate_bill(units)
+print("bill",bill)
+
+why did we create caclulate_bill instead og writing everthing in the main program.
+bcz of sepration of responsibily, resability,testing,redability,maitainance.
+
+29) function design
+a good function genrally has input,processing and output.
+
+30) do not create giant functions
+bad functions
+def student_system():
+#200 lines ->bad
+#input 
+#validation
+#calcluation
+#database
+#printing
+
+better
+def get_student:
+def validate_student:
+def calculate_student:
+def save_student:
+def display_student:
+
+this introducess single responsibilty without making the class, the function more efficient
