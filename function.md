@@ -239,6 +239,22 @@ def test():
 test()
 ```
 
+A global variable is defined outside functions. A function can read it without a special declaration. To reassign it inside a function, use the `global` keyword:
+
+```python
+count = 0
+
+
+def increment():
+	global count
+	count += 1
+
+
+increment()
+print(count)  # 1
+```
+```
+
 A function can read a global variable defined outside the function:
 
 ```python
