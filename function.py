@@ -1,58 +1,56 @@
-# define a function named welcome
+# Define a function named welcome that takes a parameter 'name'
 def welcome(name):
-	print("Welcome",name)
+	print("Welcome,", name)
 
 
 welcome("Yashashree")
 welcome("Riya")
-welcome("Priya")
 
 
-
-#define a function named add that takes two parameters a and b
-def add(a, b):
-	return a + b
+# Define a function named add that takes two parameters 'first' and 'second'
+def add(first, second):
+	return first + second
 
 
 print(add(2, 3))
 
-output: 5
+# Define a function named multiply that takes two parameters 'x' and 'y'
+def multiply(x, y):
+	return x * y
 
-#define a function named greet that takes no parameters
+
+print(multiply(2, 3))
+
+# Define a function named greet that takes no parameters
 def greet():
 	print("Hello")
 
 
-greet()
+greet()  
 
-output: Hello
-
-#define a function named welcome that takes no parameters
+# Define a function named welcome that takes no parameters
 def welcome():
 	print("Welcome to nighan2 labs")
 
 
 welcome()
 
-
-
-
-#	define a function named welcome that takes one parameter name
-def welcome(name):  # name is a parameter
+# Define a function named welcome that takes a parameter 'name'
+def welcome(name):  
 	print("Welcome,", name)
 
-	output: Welcome, Yashashree
 
-	# function to add two numbers and return the result
+welcome("Yashashree")
+
+# Define a function named add that takes two parameters 'first' and 'second'
 def add(first, second):
 	return first + second
 
 
 print(add(10, 20))
 
-output: 30
 
-#define a function to add two numbers 
+# Define a function named calculate that takes three parameters 'a', 'operator', and 'b'
 def add(first, second):
 	return first + second
 
@@ -60,9 +58,7 @@ def add(first, second):
 result = add(10, 20)
 print(result)
 
-output: 30
-
-#define a function to get a number
+# define a function that returns a number
 def get_number():
 	return 10
 	print("This line does not run")
@@ -70,11 +66,7 @@ def get_number():
 
 print(get_number())
 
-
-output:
-
-
-#define a function to calculate sum and difference
+#define a function named calculate that takes two parameters 'first' and 'second'
 def calculate(first, second):
 	return first + second, first - second
 
@@ -83,17 +75,25 @@ sum_result, difference = calculate(10, 5)
 print(sum_result)
 print(difference)
 
-output: 15
-    
-	#	define a function to greet a person with a default name
-	def greet(name="Yashashree"):
+#define a function named greet that takes a parameter 'name' with a default value
+def greet(name="Yashashree"):
 	print("Hello,", name)
 
 
-def welcome(name):
-	print("Welcome,", name)
+greet()
+greet("Riya")
+
+#define a function named show_student that takes two parameters 'name' and 'age'
+def show_student(name, age):
+	print(name, age)
 
 
-welcome("Yashashree")
-welcome("Riya")
+show_student("Yashashree", 21)
+
+
+def show_student(name, age):
+	print(name, age)
+
+
+show_student(age=21, name="Yashashree")
 
